@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>เกมครูเฟิร์นจำชื่อนักเรียน</title>
+<style>
+body{
+    font-family: Tahoma,sans-serif;
+    background: linear-gradient(#c8f0ff,#fff3c8);
+    text-align:center;
+    margin:0;
+}
+.container{
+    max-width:850px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:25px;
+    margin-top:20px;
+    box-shadow:0 0 15px rgba(0,0,0,.2);
+}
+.teacher{
+    font-size:90px;
+}
+.score{
+    background:#ff8ec7;
+    color:white;
+    padding:15px;
+    border-radius:20px;
+    font-size:22px;
+    margin-bottom:20px;
+}
+.level{
+    display:none;
+}
+.active{
+    display:block;
+}
+button{
+    background:#53c56b;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:15px;
+    font-size:18px;
+    cursor:pointer;
+}
+input{
+    font-size:18px;
+    padding:10px;
+    border-radius:10px;
+}
+.box{
+    background:#fff9d7;
+    padding:15px;
+    border-radius:20px;
+    margin-top:15px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="teacher">👩‍🏫 ครูเฟิร์น</div>
+<h1>🎮 เกมฝึกเขียนโปรแกรม input() และตัวแปร</h1>
+<div class="score">⭐ คะแนนสะสม : <span id="score">0</span></div>
+
+<div class="level active" id="level1">
+<h2>ด่าน 1 รับชื่ออย่างเดียว</h2>
+<p>input("นักเรียน ชื่ออะไรคะ")</p>
+<input id="n1">
+<br><br>
+<button onclick="level1()">Run</button>
+<div class="box" id="r1"></div>
+</div>
+
+<div class="level" id="level2">
+<h2>ด่าน 2 เก็บชื่อไว้ในตัวแปร name</h2>
+<p>name = input("นักเรียน ชื่ออะไรคะ")</p>
+<input id="n2">
+<br><br>
+<button onclick="level2()">Run</button>
+<div class="box" id="r2"></div>
+</div>
+
+<div class="level" id="level3">
+<h2>🏆 ด่าน 3 แสดงค่า print(name)</h2>
+<button onclick="level3()">print(name)</button>
+<div class="box" id="r3"></div>
+</div>
+</div>
+
+<script>
+let score=0;
+let name="";
+
+function addScore(){
+score+=10;
+document.getElementById("score").innerText=score;
+}
+
+function level1(){
+let s=document.getElementById("n1").value;
+document.getElementById("r1").innerHTML="😄 ครูเฟิร์นรู้จัก "+s+" แต่ยังจำไม่ได้เมื่อปิดโปรแกรม";
+addScore();
+document.getElementById("level1").classList.remove("active");
+document.getElementById("level2").classList.add("active");
+}
+
+function level2(){
+name=document.getElementById("n2").value;
+document.getElementById("r2").innerHTML="📦 เก็บชื่อ "+name+" ไว้ในตัวแปร name";
+addScore();
+document.getElementById("level2").classList.remove("active");
+document.getElementById("level3").classList.add("active");
+}
+
+function level3(){
+document.getElementById("r3").innerHTML="🎉 ผลลัพธ์จาก print(name)<h1>"+name+"</h1><h2>ผ่านทุกด่าน คะแนน "+score+"/30</h2>";
+addScore();
+}
+</script>
+</body>
+</html>
